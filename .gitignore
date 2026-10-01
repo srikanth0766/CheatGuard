@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.db
+frontend/node_modules/
+frontend/dist/
+evaluation/
+uploads/videos/*
+evidence/frames/*
+evidence/clips/*
+*.pt
+*.pth
+!uploads/videos/.gitkeep
+!evidence/frames/.gitkeep
+!evidence/clips/.gitkeep
