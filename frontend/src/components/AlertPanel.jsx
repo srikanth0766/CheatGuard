@@ -1,0 +1,5 @@
+import {AlertTriangle,ExternalLink} from 'lucide-react';
+import {mediaUrl} from '../services/api';
+export default function AlertPanel({alerts}) { return <section className="card alerts"><div className="section-title">Alert history <span>{alerts.length} alerts</span></div>
+ {alerts.length?alerts.map(a=><article key={a.id}>{a.evidence?.[0]?<a className="evidence-thumb" href={mediaUrl(a.evidence[0].frame_url)} target="_blank"><img src={mediaUrl(a.evidence[0].frame_url)} alt={`Evidence for alert ${a.id}`}/></a>:<AlertTriangle/>}<div><b>Student {a.student_id} · Risk {Math.round(a.risk_score)}</b><p>{a.reason}</p><small>{a.video_timestamp.toFixed(1)} seconds into video · {new Date(a.created_at).toLocaleString()}</small></div>{a.evidence?.[0]&&<div className="evidence-links"><a href={mediaUrl(a.evidence[0].frame_url)} target="_blank"><ExternalLink size={16}/> Frame</a>{a.evidence[0].clip_url&&<a href={mediaUrl(a.evidence[0].clip_url)} target="_blank"><ExternalLink size={16}/> Clip</a>}</div>}</article>):<p className="empty">No high-risk events detected.</p>}
+ </section> }
