@@ -16,9 +16,11 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://cheatguard:cheatguard@db:5432/cheatguard
       MODEL_PATH: /models/best_large.pt
+      PERSON_MODEL_PATH: /models/yolo26n.pt
       SAV_MODEL_PATH: /models/best_100.pt
     volumes:
       - ../best_large.pt:/models/best_large.pt:ro
+      - ./models/yolo26n.pt:/models/yolo26n.pt:ro
       - ../sav_training/mini100/best_100.pt:/models/best_100.pt:ro
       - ./uploads:/app/uploads
       - ./evidence:/app/evidence
